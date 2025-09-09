@@ -1,0 +1,9 @@
+name: 46W38
+channels:
+  - defaults
+dependencies:
+  - python=3.11
+  - numpy
+  - scipy
+  - matplotlib
+prefix: /opt/miniconda3/envs/46W38
