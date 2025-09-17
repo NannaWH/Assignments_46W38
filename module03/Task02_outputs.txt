@@ -16,6 +16,6 @@ continue
 x = x + 1
 print(x, y, i)
 
-# x=3 then x=10, y=12 and i = 9
+# x=3 then x=10, y=12 and i = 9 - wrong it is x=13, y=24 and i = 2 - my calculations were wrong as i forgot that the x and y from the previous loop should go to the new loop untill the loop breaks.
 
-# x=30 then x=30, y=30 and i = 0
+# x=30 then x=30, y=30 and i = 0 - wrong it is x=31 (stupid mistake), y=30 and i = 0
