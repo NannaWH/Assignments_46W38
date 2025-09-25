@@ -16,6 +16,7 @@ def get_a_list_of_numbers():
             raise ValueError(f"Invalid input: '{user_input}' is not a valid number.")
     return list_of_numbers
 
+#We define a function that finds the minimum number in the list of numbers
 def find_min(list_of_numbers):
     """We define a function to find the min in the list of numbers"""
     if list_of_numbers == "": 
@@ -25,6 +26,7 @@ def find_min(list_of_numbers):
     min_value = list_of_numbers[0]
     return min_value
 
+#We define a function that finds the maximum number in the list of numbers
 def find_max(list_of_numbers):
     """We define a function to find the max in the list of numbers"""
     if list_of_numbers == "": 
