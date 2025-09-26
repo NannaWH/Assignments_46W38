@@ -4,7 +4,7 @@
 import MyModule
 
 #We call the number list function and create a list of numbers
-number_list = MyModule.get_a_list_of_numbers()
+number_list = MyModule.get_a_list_of_numbers(20, 50, 4, 67, 98, 25, 1, 5, 89)
 
 #Using the fin_min function we find the minimum value in the list of numbers
 min = MyModule.find_min(number_list)

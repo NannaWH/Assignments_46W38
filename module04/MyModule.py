@@ -3,17 +3,12 @@
 # This script is designed to find the minimal and maximal of a sequence of numbers using functions
 
 #We ask the user to input the numbers used in the min-max finder
-def get_a_list_of_numbers():
-    list_of_numbers = []
-    while True:
-        user_input = input("Enter a number (or 'end' to finish): ").strip()
-        if user_input.lower() == 'end':
-            break
-        try:
-            number = float(user_input)
-            list_of_numbers.append(number)
-        except ValueError:
-            raise ValueError(f"Invalid input: '{user_input}' is not a valid number.")
+def get_a_list_of_numbers(*args):
+    try:
+        list_of_numbers = [float(x) for x in args]
+        print(list_of_numbers)
+    except ValueError:
+        raise ValueError(f"Invalid input: '{args}' include a non valid number.")  
     return list_of_numbers
 
 #We define a function that finds the minimum number in the list of numbers
