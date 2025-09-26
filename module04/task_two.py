@@ -4,8 +4,18 @@ def count_words(filename):
     try:
         with open(filename, encoding=None) as file:
             text = file.read()
-            words = text.split()
+
+            # Create translation table
+            import string
+            translator = str.maketrans('', '', string.punctuation)
+
+            # Remove punctuation
+            clean_text = text.translate(translator)
+
+            # split into words and count them
+            words = clean_text.split()
             word_count = len(words)
+
             return filename, word_count
     except FileNotFoundError:
         return None
