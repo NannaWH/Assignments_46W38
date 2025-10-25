@@ -29,7 +29,7 @@ plt.show()
 from scipy.stats import weibull_min
 
 #Finding the Weibull parameters
-shape, loc, scale = weibull_min.fit(V_sorted, floc = 0)
+shape, loc, scale = weibull_min.fit(V, floc = 0)
 
 #Generate the Weibull Distribution
 # Smooth x-axis for PDF

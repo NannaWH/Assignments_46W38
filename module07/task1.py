@@ -88,7 +88,6 @@ ax4.set_ylabel('Wind speed (m/s)')
 ax4.set_xlabel('Time (s)')
 ax4.set_title('Low-pass filter')
 ax4.legend(fontsize=6,loc='upper left')
-
 plt.show()
 
 """Cutoff = 0.2 smooths out the signal while keeping the most important trends in the data"""
