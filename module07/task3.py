@@ -1,6 +1,5 @@
-#################################################################################################
-# TASK 3: Wind Speed Frequencies ###############################################################
-#################################################################################################
+################################################################################
+# TASK 3: Wind Speed Frequencies ################################################################################
 
 ## Part 1 - Plotting Histogram
 import matplotlib.pyplot as plt
@@ -14,7 +13,7 @@ data_exc3= pd.read_excel("Module 7 - Exercises data.xlsx", sheet_name='Exercise 
 V = data_exc3["Wind Speed (m/s)"]
 
 #Plot Histogram 
-num_bins = 20
+num_bins = 25
 
 plt.hist(V, bins=num_bins, edgecolor='black', alpha=0.7)
 plt.grid(True, linestyle="--", alpha=0.5)

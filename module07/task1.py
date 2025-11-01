@@ -1,6 +1,6 @@
-#################################################################################################
+################################################################################
 # TASK 1: Wind Speeds at Hub Heights #
-#################################################################################################
+################################################################################
 
 ## Part 1 - Vizualize the Data
 import matplotlib.pyplot as plt
@@ -22,36 +22,37 @@ ax.set_ylabel('Wind speed (m/s)', fontsize=10)
 plt.show()
 
 ## Part 2 - Remove Noise
-from scipy.fft import fft, fftfreq, rfft, rfftfreq
+from scipy import fftpack
 from scipy.signal import welch
+from scipy.signal import butter, filtfilt, iirnotch
 
 # Fast Fouriers Tranform
-signal = np.asarray(V) # our signal is the wind speed
-t = np.asarray(Time)
+signal = np.array(V) # our signal is the wind speed
+t = np.array(Time)
 
-spectrum = np.abs(rfft(signal))
-freqs = rfftfreq(len(signal), d=t[1]-t[0])
-
+spectrum = np.abs(fftpack.rfft(signal))
+freqs = fftpack.rfftfreq(len(signal), d=t[1]-t[0])
 
 fig, ax2 = plt.subplots()
-ax2.plot(freqs, spectrum)
+ax2.plot(freqs[1:], spectrum[1:])
 ax2.set_xscale('log')
 ax2.set_xlabel('Frequency [Hz]', fontsize=10)
-ax2.set_ylabel('Magnitude', fontsize=10)
+ax2.set_ylabel('Amplitude', fontsize=10)
 ax2.set_ylim(0,20000)
 plt.show()
 
 # The PSD
-fs = 1/(t[1]-t[0])
-print(fs)
-f, Sx = welch(signal, fs=fs, nperseg=fs)
-
+fs = 1/t[1]-t[0]
+f, Pxx = welch(signal, fs=fs, nperseg=1024)
 fig, ax3 = plt.subplots()
-ax3.plot(f, Sx)
-ax3.loglog(f,Sx)
+ax3.plot(f, Pxx)
 ax3.set_xlabel('Frequency [Hz]', fontsize=10)
 ax3.set_ylabel('PSD [m^2/Hz]', fontsize=10)
+ax3.set_xscale('log')
+ax3.set_xlim(0.001,20)
+ax3.grid(True, linestyle='--', alpha=0.5)
 plt.show()
+
 
 #Part 3 - Filtering Data
 from scipy.signal import butter, filtfilt, iirnotch
@@ -62,7 +63,7 @@ def butter_filter(data, cutoff, fs, order=4, btype='low'):
     b, a = butter(order, normal_cutoff, btype=btype, analog=False)
     return filtfilt(b, a, data)
 
-low_pass = butter_filter(signal, cutoff=0.2, fs=40, btype='low')
+low_pass = butter_filter(signal, cutoff=0.04, fs=40, btype='low')
 
 #Saving the low_pass data to be used in task 2
 import json
